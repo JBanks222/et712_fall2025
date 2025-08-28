@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lab 1 by Jalen Banks</title>
 </head>
+
 <body>
     <h1>Lab 1, Jalen Banks</h1>
 
@@ -24,12 +26,12 @@
         console.log("---- Example 3: numerical operators -----")
         num1 = 8
         num2 = 5
-        let rem = num1%num2 // % returns the remainder of num1 divided by num2
+        let rem = num1 % num2 // % returns the remainder of num1 divided by num2
         console.log(`The remainder of ${num1} and ${num2} is ${rem}`)
 
         console.log("---- Example 4: boolean variables -----")
         let isPassed = true
-        let compare_num1_num2 = num1<num2
+        let compare_num1_num2 = num1 < num2
         let equal_numbers = num1 == num2
         console.log(`Did ${username} pass the class? ${isPassed}`)
         console.log(`is ${num1} less than {num2}? ${compare_num1_num2}`)
@@ -37,15 +39,15 @@
 
         console.log("---- Example 5: NaN, Not a Number -----")
         let operation = username - num1
-        console.log(`Operation = ${operation}`) 
-        console.log(`Username is a ${typeof(username)} and num1 is a ${typeof(num1)}`)
+        console.log(`Operation = ${operation}`)
+        console.log(`Username is a ${typeof (username)} and num1 is a ${typeof (num1)}`)
 
         console.log("---- Example 6: prompt method -----")
         //prompt method allows user to input information
         let number = parseInt(prompt(`Please enter a number`))
         // any data collected from the prompt method is a string
         number = number + 2
-        console.log(`The entered number is double the original number ${number} . ${typeof(number)}`)
+        console.log(`The entered number is double the original number ${number} . ${typeof (number)}`)
 
         console.log("---- Example 7: String -----")
         let password = "PeterPAN123"
@@ -53,14 +55,14 @@
 
         console.log("---- Example 8: length of a string -----")
         let num_characters = password.length
-        
+
         console.log("---- Example 9: upper and lowercase -----")
         console.log(`password to upper case ${password.toUpperCase()} `)
         console.log(password)
         console.log(` password to lowercase ${password.toLowerCase()}`)
 
         console.log("---- Example 10: Subtract method -----")
-        console.log(` Subtracted value ${password.substr(5,4)}`)
+        console.log(` Subtracted value ${password.substr(5, 4)}`)
 
         console.log("---- Example 11: Search method -----")
         console.log(`letter 'e' has index = ${password.substr('e')}`)
@@ -69,18 +71,24 @@
         console.log(`slice from 5th character ${password.slice(4)}`)
         console.log(`slice using negative index ${password.slice(-3)}`)
 
-        console.log("---- Excercise-----")
-        // Use the prompt method to collect input from the user.
-        let ID = prompt(`Please enter a number`)
-        // Access and print specific characters from a string.
-        console.log(`This is your ID number is ${ID}`)
-        //Calculate and display the length of a string.
-        let ID_length = ID.length
-        // Convert a string to uppercase.
-        console.log(`your ID number length is ${ID_length}`)
-        // Use the slice() method to extract and display specific portions of a string.
-        console.log(`a portion of ID number is ${ID.slice(-3)}`)
+        console.log("---- Exercise-----")
+        // Collect a word from the user using the prompt method and save it in a variable.
+        let word = prompt(`Please enter a word`)
+
+        // Print the second character of the string in the console with the message:
+        console.log(`The second letter of the word is: ${word[1]}`)
+
+        // Calculate and display the length of a string.
+        let word_length = word.length
+        console.log(`The length of the word ${word} is ${word_length}.`)
+
+        // Print the entire word in uppercase in the console.
+        console.log(`${word.toUpperCase()}`)
+
+        // Extract the last two characters of the word using the slice() method and display the result in the console with the message:
+        console.log(`The last two characters of the word are ${word.slice(-2)}.`)
 
     </script>
 </body>
+
 </html>
