@@ -1,5 +1,5 @@
 /**
- * students full name
+ * Jalen Banks
  * Lab 3, loops
  * Sept 4, 2025
  */
@@ -144,4 +144,52 @@ while (true) {
   if (user_transaction === 4) {
     break
   }
+}
+
+console.log('\n ---- EXERCISE A ----')
+// Exercise A: Sum negative and positive numbers separately
+let num = [-3, 10, 0, 8, -9, 5, -2, 8, 6, -1]
+let sum_negative = 0
+let sum_positive = 0
+
+for(let index = 0; index < num.length; index++){
+    if(num[index] > 0){
+        sum_positive = sum_positive + num[index]
+    }
+    else if(num[index] < 0){
+        sum_negative = sum_negative + num[index]
+    }
+    // Zero is not included in either sum (no else case for 0)
+}
+
+console.log(`Sum of all negative numbers = ${sum_negative}`)
+console.log(`Sum of all positive numbers = ${sum_positive}`)
+
+console.log('\n ---- EXERCISE B ----')
+// Exercise B: PIN validation with 3 attempts
+let PIN = 1234
+let attempt_counter = 3
+
+while(true){
+    // collect a pin number
+    let user_pin = parseInt(prompt("Enter a pin number"))
+    
+    // pin doesn't match
+    if(user_pin !== PIN){
+        attempt_counter--
+        if(attempt_counter > 0){
+            console.log(`Incorrect PIN. You have ${attempt_counter} attempts left.`)
+        }
+    }
+    else{
+        console.log('Your pin number is correct')
+        console.log('Welcome to your account')
+        break
+    }
+    
+    // attempt_counter reaches to zero
+    if(attempt_counter === 0){
+        console.log("Account is locked!")
+        break
+    }
 }
