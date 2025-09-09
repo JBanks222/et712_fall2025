@@ -66,23 +66,25 @@ function checkTemperature(temperature) {
 
 // EXERCISE 1
 console.log("-----EXERCISE 1-----")
-console.log(`\nWELCOME TO THE BIG NUMBER GAME!`)
 
-function checkBigNumber(input) {
-    let number = Number(input)
+function checkName() {
+    let userName = prompt("Enter your name:")
 
-    if (isNaN(number)) {
-        console.log("That is not a valid number. TRY AGAIN!")
-    }
-    else {
-        if (number < 222) {
-            console.log("The Number needs to be Greater or Equal to 222!")
+    while (true) {
+        // Check if user clicked Cancel or entered empty string
+        if (userName === null || userName === "") {
+            userName = prompt("You forgot to enter a name. Enter a name again:")
         }
+        // Check if user entered a number
+        else if (!isNaN(Number(userName))) {
+            userName = prompt(`${userName} is invalid! Enter a name again:`)
+        }
+        // Valid name entered
         else {
-            console.log("This number is big enough!")
+            console.log(`Welcome ${userName.toUpperCase()} to the class!`)
+            break
         }
     }
 }
 
-let input = prompt("Enter a number :)")
-checkBigNumber(input)
+checkName()
