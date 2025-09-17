@@ -1,42 +1,105 @@
-*{box-sizing: border-box;}
-html{scroll-behavior: smooth;}
-img{width: 100%;display: block;}
-/*Header*/
-header{
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Header Styles */
+header {
     background-color: rgb(0, 48, 109);
 }
-.top_header{
-    border: solid yellow 1px;
+
+/* Top Header */
+.top_header {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 10px 20px;
+    background-color: rgb(0, 48, 109);
+    gap: 40px;
 }
-.top_header div{
-    border: solid red 1px;
-     width: 32%;
-     padding: 2%;
 
+.logo_section {
+    display: flex;
+    align-items: center;
 }
-.nav_header a{
-    display: inline-block;
-    width: 25%;
-    color: whitesmoke;
-    text-decoration:none ;
-    text-align: center;
-    margin-top: 5%;
-    border-right: solid white 2px;
+
+.img_logo {
+    height: 50px;
+    width: auto;
 }
-.nav_header a:hover{
+
+.nav_header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav_header a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-right: 1px solid white;
+}
+
+.nav_header a:last-child {
+    border-right: none;
+}
+
+.nav_header a:hover {
     color: orange;
 }
-.bottom-header{
-    background-color:whitesmoke ;
-}
-.nav_bottom_header{
-    display: inline-block;
-    width: 20%;
 
+/* Bottom Header */
+.bottom_header {
+    background-color: whitesmoke;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center;
 }
 
-/*main sextion
-/*intro
+.nav_bottom_header {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav_bottom_header a {
+    color: rgb(0, 48, 109);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 0;
+    border-bottom: 3px solid transparent;
+    transition: border-bottom 0.3s ease;
+}
+
+.nav_bottom_header a:hover {
+    border-bottom: 3px solid rgb(0, 48, 109);
+}
+
+/* Main Content */
+main {
+    width: 100%;
+}
+
+.slideshow_section {
+    width: 100%;
+    position: relative;
+}
+
+.slideshow_image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
