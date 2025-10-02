@@ -1,30 +1,54 @@
-// collect (select) the elements
+/**
+ * Lab 7, Jalen Banks DOM 
+ * 
+ */
+
+console.log("Jalen Banks");
+
+// access(select) element by id name
+let titlenode = document.querySelector("#title");
+console.log(titlenode);
+
+// access(select) element by class name
+let desc = document.querySelector(".description");
+console.log(desc);
+
+// access(select) element by tag name
+let heading1 = document.querySelector("h1");
+console.log(heading1);
+
+// access(select) all element by class name
+let description_all = document.querySelectorAll(".description");
+console.log(description_all);
+console.log("Loop through each element in the node list");
+for (let index = 0; index < description_all.length; index++) {
+  console.log(description_all[index]);
+}
+
+// collect(select) the elements
 let shape = document.querySelector(".shapeDivision");
 let btn_square = document.querySelector(".btn_square");
 let btn_circle = document.querySelector(".btn_circle");
 let btn_rectangle = document.querySelector(".btn_rectangle");
-let btn_press = document.querySelector(".btnpress");
 
 // add an event to each button
 btn_square.addEventListener("click", function () {
   shape.className = "square";
-  shape.textContent = "SQUARE";
+  shape.textContent = "square".toUpperCase();
   shape.style.backgroundColor = "gold";
-  shape.style.fontSize = "3rem";
 });
 
 btn_circle.addEventListener("click", function () {
   shape.className = "circle";
   shape.textContent = "CIRCLE";
-  shape.style.backgroundColor = "hotpink";
   shape.style.fontSize = "1rem";
+  shape.style.backgroundColor = "hotpink";
 });
 
 btn_rectangle.addEventListener("click", function () {
   shape.className = "rectangle";
   shape.textContent = "RECTANGLE";
-  shape.style.backgroundColor = "lightblue";
-  shape.style.fontSize = "2rem";
+  shape.style.backgroundColor = "gray";
 });
 
 // traditional event handler example
@@ -33,12 +57,48 @@ btn_press.onclick = function () {
 };
 
 let btnpress = document.querySelector(".btnpress")
-btnpress.onclick= function(){alert(`${new Date()}`)}
+btnpress.onclick = function () { alert(`${new Date()}`) }
 
 // mouse mevents
 let x = document.querySelector(".x")
 let circle_paragraph = document.querySelector(".circle_paragragh")
-x.onmouseover = function(){circle_paragraph.textcontent += " -  CIRCLE - "}
+x.onmouseover = function () { circle_paragraph.textcontent += " -  CIRCLE - " }
 
 //COPY AND PASTE COMMENTS FROM BRIGHTSPACE AND THEN COPY HTML AND PASTE HTML IN HTML FILE
 // add a mouseout event to change text content to STUDENTS FULL NAME
+
+// EXERCISE
+// note: use querySelector() or querySelectorAll()
+
+// collect elements: search for the first p with class ps1
+let ps1 = document.querySelector(".ps1");
+// add a mouseout event to change the text content to "STUDENT'S FULL NAME"
+ps1.addEventListener("mouseout", function () {
+  ps1.textContent = "Jalen Banks";
+});
+
+// search for the second p with class ps2
+let ps2 = document.querySelector(".ps2");
+// add a click event to the ps2 to change the font-size to 25px and color to olive when is clicked
+ps2.addEventListener("click", function () {
+  ps2.style.fontSize = "25px";
+  ps2.style.color = "olive";
+});
+
+// search for the first div with class divs2
+let divs2 = document.querySelector(".divs2");
+// add a click event to change the background color to indigo
+divs2.addEventListener("click", function () {
+  divs2.style.backgroundColor = "indigo";
+});
+
+// search for the second div with class divs3
+let divs3 = document.querySelector(".divs3");
+// add a keydown event to change the width of divs3 to 300px
+divs3.addEventListener("keydown", function () {
+  divs3.style.width = "300px";
+});
+
+// Note: For the keydown event to work on divs3, the div needs to be focusable
+// Adding tabindex to make it focusable
+divs3.setAttribute("tabindex", "0");

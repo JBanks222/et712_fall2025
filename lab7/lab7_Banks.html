@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Lab 7 - DOM</title>
+  <title>Lab 7, Jalen Banks</title>
+  <link rel="stylesheet" href="lab7_style.css">
 </head>
+
 <body>
+  <h1>Lab 7, Jalen Banks</h1>
+
+  <h1 id="title">Accessing elements</h1>
+  <p class="description">Traditional methods to access elements:</p>
+  <ul class="traditionalMethods">
+    <li class="method">getElementById</li>
+    <li class="method">getElementByClassName</li>
+    <li class="method">getElementTagName</li>
+  </ul>
+
+  <p class="description">Most recent methods to access elements:</p>
+  <ul class="recentMethods">
+    <li class="method">querySelector</li>
+    <li class="method">querySelectorAll</li>
+  </ul>
+
+  <p></p>
+
   <section class="shapeContainer">
     <div class="shapeDivision">Select the Shape</div>
     <button class="btn_square">SQUARE</button>
@@ -30,6 +51,19 @@
   <input type="text" class="inputtext" id="username">
   <p class="username_paragraph"></p>
 
+  <!-- EXERCISE SECTION -->
+  <main class="container">
+    <section class="s1">
+      <p class="ps1">Welcome to DOM styling</p>
+      <p class="ps2">Try to change the font-size to 25px</p>
+    </section>
+    <section class="s2">
+      <div class="divs2"></div>
+      <div class="divs3"></div>
+    </section>
+  </main>
+
   <script src="lab7_script.js"></script>
 </body>
+
 </html>

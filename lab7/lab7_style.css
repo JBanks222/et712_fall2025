@@ -1,9 +1,70 @@
+* {
+    box-sizing: border-box;
+}
 
+.shapeContainer {
+    width: 80%;
+    margin: auto;
+    background-color: aquamarine;
+}
 
+.shapeDivision {
+    width: 200px;
+    margin: auto 3rem;
+    border: solid 1px gray;
+    padding: 2rem;
+    text-align: center;
+}
 
+.btn_square,
+.btn_circle,
+.btn_rectangle {
+    background-color: darkblue;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    width: 33%;
+    margin-top: 3rem;
+    cursor: pointer;
+}
 
+.btn_square:hover,
+.btn_circle:hover,
+.btn_rectangle:hover {
+    background-color: red;
+}
 
+.square {
+    width: 500px;
+    height: 500px;
+    background-color: chartreuse;
+}
 
+.circle {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background-color: magenta;
+}
 
+.rectangle {
+    width: 900px;
+    height: 500px;
+    background-color: maroon;
+}
 
-/*EXCERCISE*/
+.square, .circle, .rectangle {
+    text-align: center;
+    font-size: 3rem;
+    padding: 3rem;
+    margin: auto;
+}
+
+/*EXERCISE*/
+div.divs2,
+div.divs3 {
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    margin: 20px;
+}
