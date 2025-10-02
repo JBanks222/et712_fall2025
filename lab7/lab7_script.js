@@ -52,17 +52,40 @@ btn_rectangle.addEventListener("click", function () {
 });
 
 // traditional event handler example
-btn_press.onclick = function () {
-  alert("Button pressed using traditional event handler!");
-};
-
 let btnpress = document.querySelector(".btnpress")
 btnpress.onclick = function () { alert(`${new Date()}`) }
 
-// mouse mevents
-let x = document.querySelector(".x")
-let circle_paragraph = document.querySelector(".circle_paragragh")
-x.onmouseover = function () { circle_paragraph.textcontent += " -  CIRCLE - " }
+// mouse events
+let circle = document.querySelector(".cirlce");
+let circle_paragraph = document.querySelector(".circle_paragraph");
+circle.onmouseover = function () {
+  circle_paragraph.textContent += " - CIRCLE - ";
+};
+
+// EVENT LISTENER
+// collect the element
+let rectangle = document.querySelector(".RECTANGLE");
+// function to randomly pick a color as a rgb value
+const randomRGB = function () {
+  let red = Math.floor(Math.random() * 255);
+  let green = Math.floor(Math.random() * 255);
+  let blue = Math.floor(Math.random() * 255);
+  return `rgb(${red}, ${green}, ${blue})`;
+}
+rectangle.addEventListener("click", function () {
+  rectangle.style.backgroundColor = "blue";
+});
+rectangle.addEventListener("mouseout", function () {
+  rectangle.style.backgroundColor = randomRGB();
+});
+
+// key event
+// collect the element
+let inputtext = document.querySelector(".inputtext");
+let username_paragraph = document.querySelector(".username_paragraph");
+inputtext.addEventListener("keydown", function () {
+  username_paragraph.textContent = "Username MUST have at least 8 characters";
+});
 
 //COPY AND PASTE COMMENTS FROM BRIGHTSPACE AND THEN COPY HTML AND PASTE HTML IN HTML FILE
 // add a mouseout event to change text content to STUDENTS FULL NAME

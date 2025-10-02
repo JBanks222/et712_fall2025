@@ -53,7 +53,9 @@
     background-color: maroon;
 }
 
-.square, .circle, .rectangle {
+.square,
+.circle,
+.rectangle {
     text-align: center;
     font-size: 3rem;
     padding: 3rem;
@@ -67,4 +69,32 @@ div.divs3 {
     height: 100px;
     background-color: aqua;
     margin: 20px;
+}
+
+/* Mou
+se Events Circle */
+.cirlce {
+    width: 200px;
+    height: 200px;
+    background-color: magenta;
+    border-radius: 50%;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+/* Event Listener Rectangle */
+.RECTANGLE {
+    width: 400px;
+    height: 200px;
+    background-color: darkred;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+/* Circle paragraph styling */
+.circle_paragraph {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 10px;
+    min-height: 30px;
 }
