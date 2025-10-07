@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab 8 - Jalen Banks</title>
+    <link rel="stylesheet" href="lab8_style.css">
+</head>
+<body>
+    <h1>Jalen Banks</h1>
+    <h2>lab 8 , events</h2>
+    <button class="btnpressme">PRESS ME!</button>
+    <h3> Event Delegation</h3>
+    <p>Click on an item that you'd like to remove from the list</p>
+    <ul id ="list">
+        <li> Apples <span></span> &#10060;</li>
+        <li>orange<li><span></span>
+    </ul>
+
+
+    <script src="lab8_script.js"></script>
+</body>
+</html>
