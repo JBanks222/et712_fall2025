@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab 9, Jalen Banks</title>
     <link rel="stylesheet" href="lab9_style.css">
 </head>
+
 <body>
     <h1>Jalen Banks, Lab 9</h1>
     <p class="displaypixels">testing</p>
-    <section class="images">
-        <div class="img"></div>
-        <img src="images/download (1).jpg" alt="image1" class="img_gallery">
-        <img src="images/download (2).jpg" alt="image2" class="img_gallery">
-        <img src="images/download (3).jpg" alt="image3" class="img_gallery">
+    <section class="image_container">
+        <img src="images/download (1).jpg" alt="image1" class="img_gallery openmodal">
+        <img src="images/download (2).jpg" alt="image2" class="img_gallery openmodal2">
+        <img src="images/download (3).jpg" alt="image3" class="img_gallery openmodal3">
         <img src="images/download (4).jpg" alt="image4" class="img_gallery">
         <img src="images/download (5).jpg" alt="image5" class="img_gallery">
         <img src="images/download.jpg" alt="image6" class="img_gallery">
-
     </section>
 
     <section class="toTop">
@@ -25,18 +25,45 @@
 
     </section>
 
-    <script src="lab9_script.js"></script>
     <h1>MODAL WINDOW</h1>
 
-    <!----MODAL OVERLAY-->
+    <!----MODAL OVERLAY 1-->
     <section class="modal_overlay" id="modalOverlay">
-        <div class="modal"></div>
-        <span class="close_btn" id="closeBtn">&times;</span>
-        <h2>welcome</h2>
-        <div class="modal_info"></div>
-        <img src="images/download (1).jpg" alt="image1" class="modal_img">
-        <p class="modal_p">information paragraph</p>
-
+        <div class="modal">
+            <span class="close_btn" id="closeBtn">&times;</span>
+            <h2>Image Gallery - Image 1</h2>
+            <div class="modal_info">
+                <img src="images/download (1).jpg" alt="image1" class="modal_img">
+                <p class="modal_p">This is the first image in our gallery.</p>
+            </div>
+        </div>
     </section>
+
+    <!----MODAL OVERLAY 2-->
+    <section class="modal_overlay" id="modalOverlay2">
+        <div class="modal">
+            <span class="close_btn" id="closeBtn2">&times;</span>
+            <h2>Image Gallery - Image 2</h2>
+            <div class="modal_info">
+                <img src="images/download (2).jpg" alt="image2" class="modal_img">
+                <p class="modal_p">This is the second image in our gallery.</p>
+            </div>
+        </div>
+    </section>
+
+    <!----MODAL OVERLAY 3-->
+    <section class="modal_overlay" id="modalOverlay3">
+        <div class="modal">
+            <span class="close_btn" id="closeBtn3">&times;</span>
+            <h2>Image Gallery - Image 3</h2>
+            <div class="modal_info">
+                <img src="images/download (3).jpg" alt="image3" class="modal_img">
+                <p class="modal_p">This is the third image in our gallery.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="lab9_script.js"></script>
 </body>
+
 </html>
