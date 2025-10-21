@@ -8,12 +8,17 @@
 </head>
 <body>
     <h1>Jalen Banks</h1>
+    <form class="myform">
     <form action="formsent.html" class="myform">
         <legend class="legend">User Info</legend>
         <section class="formcontrol">
             <label for="username">Enter Username:</label>
             <input type="text" id="username" maxlength="20" placeholder="type username..">
             <p class="username_error_msg"></p>
+        </section>
+        <section class="formcontrol">
+            <label for="password">Enter a password</label>
+            <input type="password" id="password" class="form_input" placeholder="type your password">
         </section>
         <input type="submit" value="SUBMIT" class="btnsubmit
         ">
@@ -23,6 +28,18 @@
         </div>
 
     </form>
+
+    <form class="myform">
+        <h2>Unscramble the WORLD!!</h2>
+        <p>shuffled word</p>
+
+        <section class="formcontrol">
+            <input type="text" id="guessInput" placeholder="Type the correct word!..">
+            <p id="wordfeedback"></p>
+
+        </section>
+    </form>
+
 
     <script src="lab10_script.js"></script>
 </body>

@@ -58,3 +58,9 @@ img{width: 100%; display: block;}
     cursor: not-allowed;
     box-shadow: none;
 }
+.active_input_valid{
+    border: green 3px solid;
+}
+.active_input_invalid{
+    border: crimson 3px solid;
+}
