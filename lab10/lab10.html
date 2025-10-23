@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Jalen Banks</h1>
-    <form class="myform">
+    
     <form action="formsent.html" class="myform">
         <legend class="legend">User Info</legend>
         <section class="formcontrol">
@@ -20,26 +20,39 @@
             <label for="password">Enter a password</label>
             <input type="password" id="password" class="form_input" placeholder="type your password">
         </section>
-        <input type="submit" value="SUBMIT" class="btnsubmit
-        ">
-        <!---display a welcome message-->
+        <input type="submit" value="SUBMIT" class="btnsubmit">
+        
+        <!--display a welcome message-->
         <div class="greeting">
-            <p>Welcome to form events <span class="display username"></span></p>
+            <p>Welcome to form events <span class="display_username"></span></p>
         </div>
-
     </form>
 
-    <form class="myform">
-        <h2>Unscramble the WORLD!!</h2>
-        <p>shuffled word</p>
+    <div class="myform">
+        <h2>Unscramble the WORD!!</h2>
+        <p>Shuffled word: <span id="shuffleword"></span></p>
 
         <section class="formcontrol">
             <input type="text" id="guessInput" placeholder="Type the correct word!..">
             <p id="wordfeedback"></p>
-
         </section>
-    </form>
+    </div>
 
+    <!-- EXERCISE -->
+    <!-- Exercise: Username Availability Checker -->
+    <form class="myform" id="registrationForm">
+        <legend class="legend">Registration Form</legend>
+        <section class="formcontrol">
+            <label for="newUsername">Choose a Username:</label>
+            <input type="text" id="newUsername" placeholder="Enter desired username...">
+            <p id="availabilityFeedback"></p>
+        </section>
+        <section class="formcontrol">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" placeholder="Enter your email...">
+        </section>
+        <input type="submit" value="REGISTER" class="btnsubmit" id="registerBtn">
+    </form>
 
     <script src="lab10_script.js"></script>
 </body>
