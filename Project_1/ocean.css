@@ -84,7 +84,6 @@
     padding: 1.1rem;
     filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.25));
     transition: transform 0.2s ease, filter 0.2s ease;
-    animation: bob 3.4s ease-in-out infinite;
     cursor: pointer;
   }
   
@@ -136,12 +135,6 @@
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
   }
   
-  /* Gentle bobbing animation */
-  @keyframes bob {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-  }
-  
   /* =============================
      Tiny Islets
      ============================= */
@@ -158,7 +151,6 @@
     background: #7bb26a;
     border-radius: 28%;
     filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.22));
-    animation: bob 4.4s ease-in-out infinite;
   }
   
   .islet::before,
@@ -197,4 +189,5 @@
       font-size: 0.85rem;
     }
   }
+  
   
