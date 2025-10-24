@@ -1,11 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jalen Banks, Project 1</title>
-    <link rel="stylesheet" href="ocean.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Islands Hub — Learn & Play</title>
+  <link rel="stylesheet" href="ocean.css"/>
 </head>
 <body>
+  <!-- Audio Toggle -->
+  <button id="audioToggle" class="audio-toggle" aria-pressed="false" aria-label="Toggle beach sounds">
+    🔊 Beach Sounds
+  </button>
+
+  <main class="ocean" role="main" aria-label="Map with learning islands">
+    <!-- Decorative tiny islands (auto-generated too) -->
+    <div class="islets" aria-hidden="true"></div>
+
+    <!-- Four main islands -->
+    <nav class="islands" aria-label="Learning topics">
+      <a class="island" href="colors.html" data-topic="colors" aria-label="Go to Colors island">
+        <span class="icon" aria-hidden="true">🟨🔵🔺</span>
+        <span class="label">Colors</span>
+      </a>
+
+      <a class="island" href="numbers.html" data-topic="numbers" aria-label="Go to Numbers island">
+        <span class="icon" aria-hidden="true">🔢</span>
+        <span class="label">Numbers</span>
+      </a>
+
+      <a class="island" href="language.html" data-topic="language" aria-label="Go to Language island">
+        <span class="icon" aria-hidden="true">🌐🈴</span>
+        <span class="label">Language</span>
+      </a>
+
+      <a class="island" href="animals.html" data-topic="animals" aria-label="Go to Animals island">
+        <span class="icon" aria-hidden="true">🦁🐘🦒</span>
+        <span class="label">Animals</span>
+      </a>
+    </nav>
+  </main>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
