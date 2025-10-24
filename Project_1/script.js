@@ -1,6 +1,6 @@
 // ---------- Audio ----------
 const audioToggleBtn = document.getElementById('audioToggle');
-const beachAudio = new Audio('assets/beach-loop.mp3');
+const beachAudio = new Audio('audio/Seagull Beach Sound Effect  Free Sound Clips  Animal Sounds.mp3');
 beachAudio.loop = true;
 beachAudio.volume = 0.35;
 
@@ -157,7 +157,14 @@ function layout() {
 }
 
 // Initial layout after fonts/sizes settle
-window.addEventListener('load', layout);
+window.addEventListener('load', () => {
+  layout();
+  
+  // Add class to trigger welcome message fade-out
+  setTimeout(() => {
+    document.body.classList.add('islands-loaded');
+  }, 1000);
+});
 
 // Relayout on resize/orientation (debounced)
 let resizeTimer;
@@ -166,11 +173,41 @@ window.addEventListener('resize', () => {
   resizeTimer = setTimeout(layout, 180);
 });
 
-// ---------- Optional click sfx ----------
-const clickSfx = new Audio('assets/water-plop.mp3');
-clickSfx.volume = 0.45;
+// ---------- Island hover and click effects ----------
 document.querySelectorAll('.island').forEach(el => {
-  el.addEventListener('click', () => {
-    try { clickSfx.currentTime = 0; clickSfx.play(); } catch {}
+  // Add ripple effect on click
+  el.addEventListener('click', (e) => {
+    // Create ripple effect
+    const ripple = document.createElement('div');
+    ripple.style.position = 'absolute';
+    ripple.style.borderRadius = '50%';
+    ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+    ripple.style.transform = 'scale(0)';
+    ripple.style.animation = 'ripple 0.6s linear';
+    ripple.style.left = '50%';
+    ripple.style.top = '50%';
+    ripple.style.width = '20px';
+    ripple.style.height = '20px';
+    ripple.style.marginLeft = '-10px';
+    ripple.style.marginTop = '-10px';
+    ripple.style.pointerEvents = 'none';
+    
+    el.appendChild(ripple);
+    
+    setTimeout(() => {
+      ripple.remove();
+    }, 600);
   });
 });
+
+// Add ripple animation to CSS
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes ripple {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(style);
