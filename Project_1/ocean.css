@@ -1,0 +1,14 @@
+/* Make the background a soft baby blue */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #b3e5fc; /* Baby blue */
+    font-family: "Comic Sans MS", "Poppins", sans-serif;
+    color: #03415a; /* Deep teal for contrast */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Fill the screen */
+  }
+  
