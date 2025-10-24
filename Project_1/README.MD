@@ -5,6 +5,7 @@ each island representing a topic
 topics- color, numbers,language,animals
 the website will have no nav bar
 User will navigate by clicking onto an island where they will be taken to the interactive learning
+the islands should not be animated
 
 MINI GAMES-
 Rules for all games: user must listen for a sound, audio & correct answer is randomized
