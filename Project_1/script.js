@@ -44,32 +44,72 @@ function placeNonOverlapping({
 }) {
   const placed = [];
 
-  elements.forEach(el => {
+  elements.forEach((el, index) => {
     const w = el.offsetWidth;
     const h = el.offsetHeight;
     let attempt = 0;
     let placedOk = false;
+    let bestPosition = null;
+    let bestDistance = 0;
 
     while (attempt++ < maxAttempts && !placedOk) {
       const x = rand(bounds.left, Math.max(bounds.right - w, bounds.left));
       const y = rand(bounds.top,  Math.max(bounds.bottom - h, bounds.top));
       const rect = { x, y, w, h };
 
-      const clashWithPlaced   = placed.some(p => rectsOverlap(rect, p, minGap));
-      const clashWithExcl     = exclusionRects.some(er => rectsOverlap(rect, er, minGap));
+      const clashWithPlaced = placed.some(p => rectsOverlap(rect, p, minGap));
+      const clashWithExcl = exclusionRects.some(er => rectsOverlap(rect, er, minGap));
+      
       if (!clashWithPlaced && !clashWithExcl) {
         el.style.transform = `translate(${Math.round(x)}px, ${Math.round(y)}px)`;
         placed.push(rect);
         placedOk = true;
+      } else {
+        // Track the position with the most distance from other elements
+        let minDistanceToOthers = Infinity;
+        placed.forEach(p => {
+          const distance = Math.sqrt(Math.pow(rect.x - p.x, 2) + Math.pow(rect.y - p.y, 2));
+          minDistanceToOthers = Math.min(minDistanceToOthers, distance);
+        });
+        
+        if (minDistanceToOthers > bestDistance) {
+          bestDistance = minDistanceToOthers;
+          bestPosition = { x, y };
+        }
       }
     }
 
-    // fallback: if we couldn't place, stick it centered
+    // Enhanced fallback: use best position found, or grid-based placement
     if (!placedOk) {
-      const cx = (bounds.left + bounds.right - w) / 2;
-      const cy = (bounds.top  + bounds.bottom - h) / 2;
-      el.style.transform = `translate(${Math.round(cx)}px, ${Math.round(cy)}px)`;
-      placed.push({ x: cx, y: cy, w, h });
+      let finalX, finalY;
+      
+      if (bestPosition) {
+        finalX = bestPosition.x;
+        finalY = bestPosition.y;
+      } else {
+        // Grid-based fallback for main islands
+        const cols = 2;
+        const rows = 2;
+        const col = index % cols;
+        const row = Math.floor(index / cols);
+        
+        const cellWidth = (bounds.right - bounds.left) / cols;
+        const cellHeight = (bounds.bottom - bounds.top) / rows;
+        
+        finalX = bounds.left + (col * cellWidth) + (cellWidth - w) / 2;
+        finalY = bounds.top + (row * cellHeight) + (cellHeight - h) / 2;
+        
+        // Add some randomness to avoid perfect grid
+        finalX += rand(-20, 20);
+        finalY += rand(-20, 20);
+        
+        // Ensure within bounds
+        finalX = clamp(finalX, bounds.left, bounds.right - w);
+        finalY = clamp(finalY, bounds.top, bounds.bottom - h);
+      }
+      
+      el.style.transform = `translate(${Math.round(finalX)}px, ${Math.round(finalY)}px)`;
+      placed.push({ x: finalX, y: finalY, w, h });
     }
   });
 
@@ -78,18 +118,29 @@ function placeNonOverlapping({
 
 // ---------- Build tiny islets with random sizes ----------
 const isletsContainer = document.querySelector('.islets');
-const ISLET_COUNT = 10;
+const ISLET_COUNT = 12;
 function createIslets() {
   isletsContainer.innerHTML = '';
   for (let i = 0; i < ISLET_COUNT; i++) {
-    const d = document.createElement('div');
-    d.className = 'islet';
-    const size = clamp(Math.round(rand(24, 44)), 20, 60);
-    d.style.width = `${size}px`;
-    d.style.height = `${size}px`;
-    d.style.transform = `rotate(${rand(-18, 18)}deg)`;
-    d.style.animationDelay = `${rand(-2, 2)}s`;
-    isletsContainer.appendChild(d);
+    // Create container for the islet
+    const isletContainer = document.createElement('div');
+    isletContainer.className = 'islet';
+    
+    // Create the SVG image
+    const isletImg = document.createElement('img');
+    isletImg.src = 'assets/island.svg';
+    isletImg.alt = 'Small island';
+    isletImg.className = 'islet-image';
+    
+    // Random size and rotation
+    const size = clamp(Math.round(rand(30, 60)), 25, 80);
+    isletContainer.style.width = `${size}px`;
+    isletContainer.style.height = `${size}px`;
+    isletContainer.style.transform = `rotate(${rand(-25, 25)}deg)`;
+    
+    // Add the image to the container
+    isletContainer.appendChild(isletImg);
+    isletsContainer.appendChild(isletContainer);
   }
 }
 
@@ -104,6 +155,18 @@ function getRect(el) {
   return { x: r.left - cr.left, y: r.top - cr.top, w: r.width, h: r.height };
 }
 
+// Function to check if any main islands are overlapping
+function checkForOverlaps(placedRects, minGap) {
+  for (let i = 0; i < placedRects.length; i++) {
+    for (let j = i + 1; j < placedRects.length; j++) {
+      if (rectsOverlap(placedRects[i], placedRects[j], minGap)) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
 function layout() {
   // Ensure islets exist (and reset)
   createIslets();
@@ -111,49 +174,63 @@ function layout() {
   // Force reflow so sizes are accurate
   mainIslands.forEach(el => { el.style.transform = 'translate(-9999px, -9999px)'; });
 
-  // Container & safe bounds
-  const cRect = ocean.getBoundingClientRect();
+  // Wait for reflow
+  setTimeout(() => {
+    // Container & safe bounds
+    const cRect = ocean.getBoundingClientRect();
 
-  // Safe margins (keep islands away from edges for UX)
-  const marginPct = 0.08; // 8% padding all around
-  const bounds = {
-    left:  cRect.width  * marginPct,
-    top:   cRect.height * marginPct,
-    right: cRect.width  * (1 - marginPct),
-    bottom:cRect.height * (1 - marginPct)
-  };
+    // Safe margins (keep islands away from edges for UX)
+    const marginPct = 0.12; // increased to 12% padding for better spacing
+    const bounds = {
+      left:  cRect.width  * marginPct,
+      top:   cRect.height * marginPct,
+      right: cRect.width  * (1 - marginPct),
+      bottom:cRect.height * (1 - marginPct)
+    };
 
-  // Exclusion zone for the audio button (slightly padded)
-  const audioRect = getRect(audioToggleBtn);
-  const audioPad = 18;
-  const exclusionRects = [{ x: Math.max(audioRect.x - audioPad, 0),
-                            y: Math.max(audioRect.y - audioPad, 0),
-                            w: audioRect.w + audioPad*2,
-                            h: audioRect.h + audioPad*2 }];
+    // Exclusion zone for the audio button (slightly padded)
+    const audioRect = getRect(audioToggleBtn);
+    const audioPad = 25; // increased padding around audio button
+    const exclusionRects = [{ x: Math.max(audioRect.x - audioPad, 0),
+                              y: Math.max(audioRect.y - audioPad, 0),
+                              w: audioRect.w + audioPad*2,
+                              h: audioRect.h + audioPad*2 }];
 
-  // Place main islands (non-overlapping)
-  const mainPlaced = placeNonOverlapping({
-    container: ocean,
-    elements: mainIslands,
-    bounds,
-    minGap: 28,                // bigger gap for big tiles
-    exclusionRects
-  });
+    let attempts = 0;
+    let mainPlaced;
+    const maxLayoutAttempts = 5;
+    
+    // Try multiple times to get a good layout
+    do {
+      attempts++;
+      
+      // Place main islands (non-overlapping) with increased gap
+      mainPlaced = placeNonOverlapping({
+        container: ocean,
+        elements: mainIslands,
+        bounds,
+        minGap: 60 + (attempts * 10), // increase gap with each attempt
+        exclusionRects,
+        maxAttempts: 1500
+      });
+      
+    } while (checkForOverlaps(mainPlaced, 40) && attempts < maxLayoutAttempts);
 
-  // Now place islets around, avoiding the main islands a bit (but not too strict)
-  const islets = Array.from(document.querySelectorAll('.islet'));
-  placeNonOverlapping({
-    container: ocean,
-    elements: islets,
-    bounds: {
-      left:  cRect.width  * 0.02,
-      top:   cRect.height * 0.03,
-      right: cRect.width  * 0.98,
-      bottom:cRect.height * 0.95
-    },
-    minGap: 12,
-    exclusionRects: mainPlaced.concat(exclusionRects)
-  });
+    // Now place islets around, avoiding the main islands
+    const islets = Array.from(document.querySelectorAll('.islet'));
+    placeNonOverlapping({
+      container: ocean,
+      elements: islets,
+      bounds: {
+        left:  cRect.width  * 0.02,
+        top:   cRect.height * 0.03,
+        right: cRect.width  * 0.98,
+        bottom:cRect.height * 0.95
+      },
+      minGap: 15,
+      exclusionRects: mainPlaced.concat(exclusionRects)
+    });
+  }, 50); // Small delay to ensure proper sizing
 }
 
 // Initial layout after fonts/sizes settle

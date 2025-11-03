@@ -166,7 +166,7 @@
   
   /* Main clickable island styles */
   .island {
-    --size: min(25vw, 200px);
+    --size: min(40vw, 320px);
     position: absolute;
     width: var(--size);
     height: var(--size);
@@ -218,28 +218,26 @@
   /* Each small islet (randomly generated) */
   .islet {
     position: absolute;
-    background: #7bb26a;
-    border-radius: 28%;
-    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.22));
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+    transition: filter 0.3s ease;
   }
   
-  .islet::before,
-  .islet::after {
-    content: "";
-    position: absolute;
-    inset: -5px;
-    border-radius: 32%;
+  .islet-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
   }
   
-  .islet::before {
-    background: #d9c39a; /* sand */
+  /* Subtle hover effect for islets */
+  .islet:hover {
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
   }
   
-  .islet::after {
-    inset: -9px;
-    background: #ffefc7;
-    border-radius: 36%;
-    opacity: 0.9;
+  .islet:hover .islet-image {
+    opacity: 1;
   }
   
   /* =============================
@@ -247,7 +245,7 @@
      ============================= */
   @media (max-width: 768px) {
     .island {
-      --size: min(30vw, 150px);
+      --size: min(45vw, 220px);
     }
     
     .audio-toggle {
@@ -257,7 +255,7 @@
   
   @media (max-width: 480px) {
     .island {
-      --size: min(35vw, 120px);
+      --size: min(50vw, 180px);
     }
     
     .audio-toggle {
@@ -280,7 +278,7 @@
 
   @media (max-width: 320px) {
     .island {
-      --size: min(40vw, 100px);
+      --size: min(55vw, 140px);
     }
   }
   
