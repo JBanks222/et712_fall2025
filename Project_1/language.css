@@ -21,12 +21,16 @@ body {
     background: rgba(255, 255, 255, 0.9);
     border: none;
     padding: 12px 20px;
+    min-height: 44px; /* Minimum touch target size (WCAG recommendation) */
+    min-width: 80px;
     border-radius: 25px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
+    touch-action: manipulation; /* Prevents double-tap zoom on mobile */
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3); /* Better tap feedback */
 }
 
 .back-btn:hover {
@@ -99,12 +103,16 @@ body {
     color: white;
     border: none;
     padding: 15px 30px;
+    min-height: 44px; /* Minimum touch target size (WCAG recommendation) */
+    min-width: 120px;
     border-radius: 25px;
     font-size: clamp(1rem, 2.5vw, 1.2rem);
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
+    touch-action: manipulation; /* Prevents double-tap zoom on mobile */
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3); /* Better tap feedback */
 }
 
 .randomize-btn:hover {
@@ -144,12 +152,16 @@ body {
     padding: clamp(15px, 2.5vw, 30px);
     width: clamp(140px, 16vw, 220px);
     height: clamp(140px, 16vw, 220px);
+    min-width: 90px; /* Minimum touch target size for mobile */
+    min-height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.4));
     flex-shrink: 0;
+    touch-action: manipulation; /* Prevents double-tap zoom on mobile */
+    -webkit-tap-highlight-color: rgba(78, 205, 196, 0.3); /* Better tap feedback on mobile */
 }
 
 .word-card:hover {
@@ -217,8 +229,10 @@ body {
 
 @media (max-width: 480px) {
     .back-btn {
-        padding: 8px 15px;
+        padding: 10px 18px; /* Increased padding for better touch target */
         font-size: 14px;
+        min-height: 44px; /* Ensure minimum touch target */
+        min-width: 70px;
     }
     
     .randomize-controls {
@@ -231,19 +245,27 @@ body {
     
     .words-container {
         top: 50%;
-        gap: clamp(10px, 2vw, 20px);
-        padding: 10px;
+        gap: clamp(12px, 2.5vw, 20px); /* Slightly larger gap for better touch separation */
+        padding: 15px;
         max-width: 98%;
     }
     
     .word-card {
-        width: clamp(90px, 11vw, 130px);
-        height: clamp(90px, 11vw, 130px);
-        padding: 10px;
+        width: clamp(90px, 12vw, 130px);
+        height: clamp(90px, 12vw, 130px);
+        padding: 12px; /* Increased padding for better touch area */
+        min-width: 90px; /* Ensure minimum touch target */
+        min-height: 90px;
     }
     
     .word-text {
         font-size: clamp(1rem, 2.5vw, 1.6rem);
+    }
+    
+    .randomize-btn {
+        padding: 12px 24px;
+        min-height: 44px;
+        min-width: 140px;
     }
 }
 

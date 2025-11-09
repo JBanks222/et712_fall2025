@@ -136,6 +136,8 @@
     top: 1rem;
     left: 1rem;
     padding: 0.6rem 0.9rem;
+    min-height: 44px; /* Minimum touch target size (WCAG recommendation) */
+    min-width: 120px;
     border: none;
     border-radius: 999px;
     background: #ffffffcc;
@@ -145,6 +147,8 @@
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(4px);
     transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+    touch-action: manipulation; /* Prevents double-tap zoom on mobile */
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3); /* Better tap feedback */
   }
   
   .audio-toggle[aria-pressed="true"] {
@@ -170,10 +174,14 @@
     position: absolute;
     width: var(--size);
     height: var(--size);
+    min-width: 120px; /* Minimum touch target size for mobile */
+    min-height: 120px;
     text-decoration: none;
     cursor: pointer;
     transition: transform 0.3s ease, filter 0.3s ease;
     filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+    touch-action: manipulation; /* Prevents double-tap zoom on mobile */
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3); /* Better tap feedback */
   }
   
   /* The SVG image that fills the entire island */
@@ -256,11 +264,15 @@
   @media (max-width: 480px) {
     .island {
       --size: min(50vw, 180px);
+      min-width: 140px; /* Ensure minimum touch target on small screens */
+      min-height: 140px;
     }
     
     .audio-toggle {
       font-size: 0.9rem;
-      padding: 0.5rem 0.7rem;
+      padding: 0.65rem 0.85rem;
+      min-height: 44px; /* Ensure minimum touch target */
+      min-width: 110px;
     }
 
     .welcome-message {
@@ -279,6 +291,14 @@
   @media (max-width: 320px) {
     .island {
       --size: min(55vw, 140px);
+      min-width: 120px; /* Ensure minimum touch target even on very small screens */
+      min-height: 120px;
+    }
+    
+    .audio-toggle {
+      padding: 0.6rem 0.8rem;
+      min-height: 44px;
+      min-width: 100px;
     }
   }
   

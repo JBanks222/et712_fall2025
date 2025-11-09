@@ -21,12 +21,16 @@ body {
     background: rgba(255, 255, 255, 0.9);
     border: none;
     padding: 12px 20px;
+    min-height: 44px; /* Minimum touch target size (WCAG recommendation) */
+    min-width: 80px;
     border-radius: 25px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
+    touch-action: manipulation; /* Prevents double-tap zoom on mobile */
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3); /* Better tap feedback */
 }
 
 .back-btn:hover {
@@ -99,12 +103,16 @@ body {
     color: white;
     border: none;
     padding: 15px 30px;
+    min-height: 44px; /* Minimum touch target size (WCAG recommendation) */
+    min-width: 120px;
     border-radius: 25px;
     font-size: clamp(1rem, 2.5vw, 1.2rem);
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
+    touch-action: manipulation; /* Prevents double-tap zoom on mobile */
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3); /* Better tap feedback */
 }
 
 .randomize-btn:hover {
@@ -134,6 +142,8 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.4));
+    touch-action: manipulation; /* Prevents double-tap zoom on mobile */
+    -webkit-tap-highlight-color: rgba(78, 205, 196, 0.3); /* Better tap feedback on mobile */
 }
 
 .surfboard:hover {
@@ -149,6 +159,8 @@ body {
     width: clamp(120px, 18vw, 200px);
     height: auto;
     display: block;
+    min-width: 70px; /* Minimum touch target size for mobile */
+    min-height: 70px;
 }
 
 /* Sand Background */
@@ -216,16 +228,26 @@ body {
 
 @media (max-width: 480px) {
     .back-btn {
-        padding: 8px 15px;
+        padding: 10px 18px; /* Increased padding for better touch target */
         font-size: 14px;
+        min-height: 44px; /* Ensure minimum touch target */
+        min-width: 70px;
     }
     
     .surfboards-container {
         bottom: 2%;
-        gap: clamp(5px, 2vw, 15px);
+        gap: clamp(8px, 2.5vw, 15px); /* Slightly larger gap for better touch separation */
     }
     
     .surfboard-img {
-        width: clamp(70px, 12vw, 120px);
+        width: clamp(80px, 13vw, 120px); /* Increased minimum for better touch target */
+        min-width: 80px;
+        min-height: 80px;
+    }
+    
+    .randomize-btn {
+        padding: 12px 24px;
+        min-height: 44px;
+        min-width: 140px;
     }
 }
