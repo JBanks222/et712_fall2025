@@ -1,5 +1,6 @@
 import React from "react";
 import img3 from '../images/img3.jpg';
+import { Link } from "react-router-dom";
 import '../App.css';
 
 const Home = function() {
@@ -11,11 +12,15 @@ const Home = function() {
       <main className="maincontainer">
         <section className="card-row">
           <div className="card-vertical">
-            <img src={img3} alt="Card 1" />
+            <Link to="/about" className="card-link">
+              <img src={img3} alt="Card 1" />
+            </Link>
           </div>
 
           <div className="card-vertical">
-            <img src={img3} alt="Card 2" />
+            <Link to="/about" className="card-link">
+              <img src={img3} alt="Card 2" />
+            </Link>
           </div>
         </section>
       </main>
