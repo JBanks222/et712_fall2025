@@ -1,0 +1,88 @@
+*{box-sizing: border-box;}
+img{width: 100%; display: block;}
+.title{
+  text-align: center;
+  color: blueviolet
+}
+/* Global layout: center horizontally, align to top */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center horizontally */
+  justify-content: flex-start; /* align to top */
+  min-height: 100vh;
+  background: #ffffff;
+}
+/*navbars.js*/
+.navbar{
+  background-color: aliceblue;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  padding: 1rem 2rem;
+}
+.qcclink{width: 20%;}
+.qcclink a{color: blueviolet; text-decoration: none; font-weight:700;}
+
+.btngroup{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  width: 80%;
+  justify-content: flex-end;
+}
+
+.btngroup .nav-link{
+  color: blueviolet;
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+}
+
+.btngroup .nav-link:hover,
+.qcclink a:hover{
+  color: crimson;
+}
+
+/* Cards on Home page */
+.card-row{
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 2rem auto;
+}
+
+.card-vertical{
+  width: 220px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.card-vertical img{
+  width: 100%;
+  height: 320px; /* vertical card height */
+  object-fit: cover;
+  display: block;
+  transition: opacity 220ms ease;
+}
+
+.card-vertical:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.card-vertical:hover img{
+  opacity: 0.6; /* lower opacity on hover */
+}
+
+/* captions removed; cards now display images only */
+/*about.js*/
+.headertitle{text-align: center;}

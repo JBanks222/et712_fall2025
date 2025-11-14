@@ -6,7 +6,7 @@ const Navbars = function () {
   return (
     <>
       <nav className="navbar">
-        <div>
+        <div className="qcclink">
           <a
             href="https://qcc.cuny.edu"
             target="_blank"
