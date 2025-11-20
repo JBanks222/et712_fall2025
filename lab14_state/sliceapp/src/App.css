@@ -12,54 +12,102 @@ img{ width: 100%; display: block;}
 .title{
   text-align: center;
   font-family: 'Arial Black', sans-serif;
-  
-  .slidewrapper{
-    margin: 2rem;
-    width:600px;
-    padding:2rem;
+}
 
-  }
+/* slide card container */
+.slidewrapper{
+  margin: 2rem auto;
+  width: 800px;
+  padding: 2.5rem;
+  background-color: #cfeef7; /* light blue */
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .numberwrapper{
-  height: 200px;
+  height: 120px;
   display:flex;
-  justify-content: space-around;
-  margin: 2rem auto;
-  background-color: lightblue;
-  color:white;
-
+  justify-content: center;
+  gap: 3rem;
+  margin: 1.5rem 0 2rem 0;
+  align-items: center;
+  width: 100%;
 }
 .numberwrapper>div{
-  border: solid gray 1px;
-  width: 50px;
-  height: 50px;
+  border: 2.5px solid #c7d4e2;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  text-align: center;
-  margin: 3rem;
-
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background: transparent;
+  color: #b0bfc7;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: none;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 .msg{
   text-align: center;
   font-weight: bolder;
-  
+  color: #003366; /* dark blue text inside card */
+  font-size: 1.25rem;
+  margin-top: 0;
 }
 .btngroup{
   display:flex;
-  justify-content: space-evenly;
-  margin-bottom: 2.5rem;
-
+  justify-content: center;
+  gap: 4rem;
+  margin: 2.5rem 0 3rem 0;
 }
 .btngroup>button{
-  width: 30%;
+  min-width: 200px;
   background-color: orangered;
   color: white;
   border: none;
-  padding: 1rem;
-  border-radius: 10px;
-
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  font-weight: 600;
 }
 .btngroup>button:hover{
-  background-color: orangered;
-  box-shadow: 0px 0px 1px gray;
+  background-color: #ff6b2e;
+  transform: translateY(-2px);
+}
+
+.btngroup>button:disabled{
+  opacity: 0.5;
+  transform: none;
+  cursor: not-allowed;
+}
+
+/* active numbered circle */
+.active{
+  background-color: #ff3c00;
+  color: #fff;
+  border: 2.5px solid #ff3c00;
+  box-shadow: 0 0 16px 4px rgba(255, 60, 0, 0.35);
+  z-index: 1;
+}
+
+/* read more button styled like nav buttons */
+.readmorebtn{
+  border: none;
+  padding: 0.5rem 1rem;
+  background-color: #d90429;
+  color: white;
+  cursor: pointer;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+  margin-left: 1rem;
+  transition: background 0.2s, transform 0.2s;
+}
+.readmorebtn:hover {
+  background-color: #a8001a;
+  transform: translateY(-2px);
 }
