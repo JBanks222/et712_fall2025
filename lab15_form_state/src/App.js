@@ -11,6 +11,9 @@ function App() {
   // set constant for comments using textarea
   const [textcomment, setTextcomment] = useState("")
 
+  // set constant for password
+  const [password, setPassword] = useState("")
+
   //function to collect the selected gender
   const selectedGender = (event) => {
     setMyGender(event.target.value)
@@ -19,6 +22,11 @@ function App() {
   // function to collect the submitted comments
   const submitted_comments = (event) => {
     setTextcomment(event.target.value)
+  }
+
+  // function to collect the password
+  const handle_password = (event) => {
+    setPassword(event.target.value)
   }
 
   // function to handle changes in all inputs
@@ -87,6 +95,20 @@ function App() {
             />
           </div>
 
+          {/** password input */}
+          <div className='formgroup'>
+            <label htmlFor="password">Enter password: </label>
+            <input
+              type="password"
+              id="password"
+              className='inputstyle'
+              name="password"
+              placeholder="Type your password..."
+              value={password}
+              onChange={handle_password}
+            />
+          </div>
+
           {/* submit form */}
           <input type="submit" className="btnsubmit" value="Submit Form"/>
         </fieldset>
@@ -96,6 +118,7 @@ function App() {
       <p className='printusername'>Age: {inputs.age}</p>
       <p className='printusername'>Gender: {myGender}</p>
       <p className='printusername'>Comments: {textcomment}</p>
+      <p className='printusername'>Password: {password}</p>
     </div>
   );
 }
