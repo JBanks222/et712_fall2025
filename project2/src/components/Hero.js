@@ -1,9 +1,23 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../assets/gingerbread-logo.svg';
 
 const Hero = () => {
-  const scrollToProducts = () => {
-    document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const goToProducts = () => {
+    // If we're on the home page, scroll to products
+    if (location.pathname === '/') {
+      document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Otherwise, navigate to products page
+      navigate('/products');
+    }
+  };
+
+  const goToAbout = () => {
+    navigate('/about');
   };
 
   return (
@@ -17,10 +31,10 @@ const Hero = () => {
           Each piece lovingly crafted for your festive celebrations.
         </p>
         <div className="hero-buttons">
-          <button className="hero-cta hero-cta-primary" onClick={scrollToProducts}>
+          <button className="hero-cta hero-cta-primary" onClick={goToProducts}>
             Shop Collection
           </button>
-          <button className="hero-cta hero-cta-secondary">
+          <button className="hero-cta hero-cta-secondary" onClick={goToAbout}>
             Learn More
           </button>
         </div>
